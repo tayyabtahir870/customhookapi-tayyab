@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import useFetch from './useFetch';
 
 function App() {
+  const {data,loading,error}=useFetch("https://jsonplaceholder.typicode.com/users")
+  // console.log(data);
+
+  if(loading) return  <h1> loading...</h1>
+  if(error) return  console.log(error);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         <h1>
+              {JSON.stringify(data)}
+         </h1>
     </div>
   );
 }
